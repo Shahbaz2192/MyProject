@@ -16,6 +16,12 @@
   - name: clone a repo
     git: repo=https://github.com/Shahbaz2192/MyProject.git dest=/tmp/mygitrepo1
   - name: build docker file
-    command: chdir=/tmp/mygitrepo1 docker build -t myadd:ansible2 .
+    command: chdir=/tmp/mygitrepo1 docker build -t myadd:ansible1 .
+  - name: login docker
+    command: docker login --username shahbaz2192 --password Bittu9980@
+  - name: tag the image
+    command: docker tag myadd:ansible1 shahbaz2192/myadd:ansible1
+  - name: push
+    command: docker push shahbaz2192/myadd:ansible1
   - name: create container
-    command: docker run -itd -P myadd:ansible2
+    command: docker run -itd -P myadd:ansible1
